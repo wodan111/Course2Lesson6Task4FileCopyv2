@@ -7,7 +7,7 @@ public class Main {
 
 	public static void main(String[] args) {
 
-		File workDirectory = new File("C:\\Users\\Вадим\\Documents\\Aspyr\\The Shie");
+		File workDirectory = new File(".");
 		File[] arrWorkDirectory = workDirectory.listFiles(new MyFileFilter());
 
 		File newFolder = new File("New Folder");
