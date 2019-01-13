@@ -1,4 +1,4 @@
-package ua.testov.test; 
+package ua.testov.test;
 
 import java.io.File;
 import java.io.IOException;
@@ -26,7 +26,7 @@ public class Main {
 
 		if (arrWorkDirectory.length >= 10) {
 			x = 10;
-			Thread[] arrThr = arrayThread(arrWorkDirectory, arrNewFolder, x);
+			Thread[] arrThr = arrayForThread(arrWorkDirectory, arrNewFolder, x);
 			startThread(arrThr);
 			joinThread(arrThr);
 		} else {
@@ -43,7 +43,7 @@ public class Main {
 		System.out.println("File copy finished");
 	}
 
-	public static Thread[] arrayThread(File[] arrIn, File[] arrOut, int threadNumber) {
+	public static Thread[] arrayForThread(File[] arrIn, File[] arrOut, int threadNumber) {
 		Thread[] arrThr = new Thread[threadNumber];
 		for (int i = 0; i < arrThr.length; i++) {
 			int size = arrIn.length / threadNumber;
