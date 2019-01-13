@@ -1,4 +1,4 @@
-package ua.testov.test;
+package ua.testov.test; 
 
 import java.io.File;
 import java.io.IOException;
@@ -7,7 +7,7 @@ public class Main {
 
 	public static void main(String[] args) {
 
-		File workDirectory = new File("C:\\Users\\Вадим\\Documents\\Aspyr\\The Shie");
+		File workDirectory = new File(".");
 		File[] arrWorkDirectory = workDirectory.listFiles(new MyFileFilter());
 
 		File newFolder = new File("New Folder");
@@ -23,23 +23,23 @@ public class Main {
 		File[] arrNewFolder = newFolder.listFiles();
 
 		int x = arrWorkDirectory.length;
-		
-		if(arrWorkDirectory.length>=10) {
-			x=10;
+
+		if (arrWorkDirectory.length >= 10) {
+			x = 10;
 			Thread[] arrThr = arrayThread(arrWorkDirectory, arrNewFolder, x);
 			startThread(arrThr);
 			joinThread(arrThr);
-		}else {
+		} else {
 			Thread[] arrThr = new Thread[x];
-		for (int i = 0; i < arrThr.length; i++) {
-			File[] arrIn=new File[] {arrWorkDirectory[i]};
-			File[] arrOut=new File[] {arrNewFolder[i]};
-			arrThr[i] = new Thread(new ThreadCopyFile(arrIn,arrOut,0,1));
-		}	
-		startThread(arrThr);
-		joinThread(arrThr);
+			for (int i = 0; i < arrThr.length; i++) {
+				File[] arrIn = new File[] { arrWorkDirectory[i] };
+				File[] arrOut = new File[] { arrNewFolder[i] };
+				arrThr[i] = new Thread(new ThreadCopyFile(arrIn, arrOut, 0, 1));
+			}
+			startThread(arrThr);
+			joinThread(arrThr);
 		}
-		
+
 		System.out.println("File copy finished");
 	}
 
@@ -56,12 +56,14 @@ public class Main {
 		}
 		return arrThr;
 	}
-	public static void startThread(Thread[]th) {
+
+	public static void startThread(Thread[] th) {
 		for (int i = 0; i < th.length; i++) {
 			th[i].start();
 		}
 	}
-	public static void joinThread(Thread[]th) {
+
+	public static void joinThread(Thread[] th) {
 		for (int i = 0; i < th.length; i++) {
 			try {
 				th[i].join();
